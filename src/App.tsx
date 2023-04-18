@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
-import Select from 'react-select'
+// import { useEffect } from 'react'
 import classes from './App.module.css'
+import Form from './components/form'
 
 function App() {
   return (
@@ -9,13 +10,7 @@ function App() {
       <span className={classes.Brand}>TAIWAN</span>
       <main className={classes.Main}>
         <header className={classes.Header}>人口數、戶數按戶別及性別統計</header>
-        <form>
-          <Select
-            placeholder="請選擇"
-            components={{ IndicatorSeparator: undefined }}
-          />
-          <input type="text" />
-        </form>
+        <Form />
         <div>chart</div>
       </main>
     </div>

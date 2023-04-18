@@ -1,0 +1,5 @@
+.BUTTON {
+  appearance: none;
+  background: var(--primary);
+  color: white;
+}

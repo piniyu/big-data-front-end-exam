@@ -1,0 +1,84 @@
+{
+  "/v1/datastore/ODRP019/{yyy}": {
+    "get": {
+      "summary": "戶數、人口數按戶別及性別",
+      "description": "戶數、人口數按戶別及性別",
+      "operationId": "ODRP019",
+      "tags": ["ODRP019"],
+      "parameters": [
+        {
+          "name": "yyy",
+          "in": "path",
+          "description": "報表民國年度",
+          "required": true,
+          "schema": { "type": "string", "enum": [106, 107, 108, 109, 110, 111] }
+        },
+        {
+          "name": "PAGE",
+          "in": "query",
+          "description": "分頁頁碼",
+          "required": false,
+          "schema": { "type": "string" }
+        },
+        {
+          "name": "COUNTY",
+          "in": "query",
+          "description": "縣市",
+          "required": false,
+          "schema": { "type": "string" }
+        },
+        {
+          "name": "TOWN",
+          "in": "query",
+          "description": "鄉鎮市區",
+          "required": false,
+          "schema": { "type": "string" }
+        },
+        {
+          "name": "VILLAGE",
+          "in": "query",
+          "description": "村里",
+          "required": false,
+          "schema": { "type": "string" }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "戶數、人口數按戶別及性別資料查詢完成",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "responseCode": {
+                    "type": "string",
+                    "description": "回應代碼"
+                  },
+                  "responseMessage": {
+                    "type": "string",
+                    "description": "回應訊息"
+                  },
+                  "totalPage": { "type": "string", "description": "總頁數" },
+                  "totalDataSize": {
+                    "type": "string",
+                    "description": "總筆數"
+                  },
+                  "page": { "type": "string", "description": "當次查詢頁碼" },
+                  "pageDataSize": {
+                    "type": "string",
+                    "description": "當頁資料筆數"
+                  },
+                  "responseData": {
+                    "description": "回傳查詢資料結果",
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/ODRP019Type" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
