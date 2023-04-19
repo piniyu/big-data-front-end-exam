@@ -5,7 +5,7 @@ import { RouterProvider } from 'react-router-dom'
 import './index.css'
 import reportWebVitals from './reportWebVitals'
 import { sendToVercelAnalytics } from './vitals'
-import router from './router'
+import router from './routes/router'
 
 const container = document.getElementById('root') as HTMLElement
 

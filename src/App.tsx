@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 // import { useEffect } from 'react'
 import classes from './App.module.css'
-import Form from './components/form'
+import Form from './components/Form'
 
 function App() {
   return (

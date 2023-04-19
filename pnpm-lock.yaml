@@ -34,6 +34,9 @@ dependencies:
   fast-xml-parser:
     specifier: ^4.2.1
     version: 4.2.1
+  highcharts:
+    specifier: ^10.3.3
+    version: 10.3.3
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -5832,6 +5835,10 @@ packages:
   /he@1.2.0:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
     hasBin: true
+    dev: false
+
+  /highcharts@10.3.3:
+    resolution: {integrity: sha512-r7wgUPQI9tr3jFDn3XT36qsNwEIZYcfgz4mkKEA6E4nn5p86y+u1EZjazIG4TRkl5/gmGRtkBUiZW81g029RIw==}
     dev: false
 
   /hoist-non-react-statics@3.3.2:
