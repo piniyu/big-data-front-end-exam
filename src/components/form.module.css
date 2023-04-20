@@ -1,5 +1,19 @@
-.BUTTON {
-  appearance: none;
+.Form {
+  display: flex;
+  gap: 12px;
+}
+.Button {
+  border: none;
+  border-radius: 4px;
+  padding: 6px 16px;
   background: var(--primary);
   color: white;
+  font-weight: bold;
+}
+.Button:disabled {
+  background: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.26);
+}
+.Error {
+  color: red;
 }

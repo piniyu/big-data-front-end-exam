@@ -37,6 +37,9 @@ dependencies:
   highcharts:
     specifier: ^10.3.3
     version: 10.3.3
+  highcharts-react-official:
+    specifier: ^3.2.0
+    version: 3.2.0(highcharts@10.3.3)(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -5835,6 +5838,16 @@ packages:
   /he@1.2.0:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
     hasBin: true
+    dev: false
+
+  /highcharts-react-official@3.2.0(highcharts@10.3.3)(react@18.2.0):
+    resolution: {integrity: sha512-71IJZsLmEboYFjONpwC3NRsg6JKvtKYtS5Si3e6s6MLRSOFNOY8KILTkzvO36kjpeR/A0X3/kvvewE+GMPpkjw==}
+    peerDependencies:
+      highcharts: '>=6.0.0'
+      react: '>=16.8.0'
+    dependencies:
+      highcharts: 10.3.3
+      react: 18.2.0
     dev: false
 
   /highcharts@10.3.3:

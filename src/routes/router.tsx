@@ -3,6 +3,10 @@ import axios from 'axios'
 import App from '../App'
 import ErrorPage from './ErrorPage'
 import { countyLoader } from '../components/CountySelect'
+// import { townLoader } from '../components/TownSelect'
+import xmlParser from '../utils/xmlParser'
+
+// export let countyStore = []
 
 const routerObjectArr: RouteObject[] = [
   {
@@ -20,12 +24,12 @@ const routerObjectArr: RouteObject[] = [
           {
             path: ':county',
             element: <App />,
+            // loader: townLoader,
             children: [
               {
                 path: ':town',
                 element: <App />,
                 loader: async ({ params }) => {
-                  console.log(params)
                   return axios
                     .get(
                       `https://www.ris.gov.tw/rs-opendata/api/v1/datastore/ODRP019/${params.year}`,
@@ -38,7 +42,6 @@ const routerObjectArr: RouteObject[] = [
                     )
                     .then(response => {
                       console.log(response)
-
                       return response
                     })
                 },

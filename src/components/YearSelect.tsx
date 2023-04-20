@@ -11,6 +11,7 @@ export default function CountySelect() {
     <Controller
       name="year"
       control={control}
+      rules={{ required: true }}
       render={({ field }) => (
         <Select
           {...field}

@@ -2,12 +2,21 @@ import { Controller, useFormContext } from 'react-hook-form'
 import Select from 'react-select'
 import { useRouteLoaderData } from 'react-router-dom'
 import axios from 'axios'
-import { XMLParser } from 'fast-xml-parser'
 import { FormProps } from './FormType'
+import xmlParser from '../utils/xmlParser'
 
-const xmlParser = new XMLParser()
+type CountyItemType = {
+  countycode: string
+  countycode01: number
+  countyname: string
+}[]
+
+let countyDataCache: CountyItemType | null
 
 export async function countyLoader() {
+  if (countyDataCache) {
+    return countyDataCache
+  }
   return axios.get(`https://api.nlsc.gov.tw/other/ListCounty`).then(res => {
     const jObj = xmlParser.parse(res.data) as {
       '?xml': string
@@ -19,6 +28,7 @@ export async function countyLoader() {
         }[]
       }
     }
+    countyDataCache = jObj.countyItems.countyItem
     return jObj.countyItems.countyItem
   })
 }
@@ -32,6 +42,7 @@ export default function CountySelect() {
     <Controller
       name="county"
       control={control}
+      rules={{ required: true }}
       render={({ field }) => (
         <Select
           {...field}
