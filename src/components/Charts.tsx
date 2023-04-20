@@ -1,6 +1,7 @@
 import * as Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import { useRouteLoaderData } from 'react-router-dom'
+import classes from './Charts.module.css'
 
 type HouseholdDataType = {
   district_code: string
@@ -20,30 +21,33 @@ type HouseholdDataType = {
 
 export default function Carts() {
   const data = useRouteLoaderData('charData') as HouseholdDataType[]
-  const householdOrdinaryMale = data.reduce(
-    (a, b) => a + parseInt(b.household_ordinary_m, 10),
-    0,
-  )
-  const householdOrdinaryFemale = data.reduce(
-    (a, b) => a + parseInt(b.household_ordinary_f, 10),
-    0,
-  )
-  const householdSingleMale = data.reduce(
-    (a, b) => a + parseInt(b.household_single_f, 10),
-    0,
-  )
-  const householdSingleFemale = data.reduce(
-    (a, b) => a + parseInt(b.household_single_f, 10),
-    0,
-  )
-  const householdOrdinary = householdOrdinaryMale + householdOrdinaryFemale
-  const householdSingle = householdSingleMale + householdSingleFemale
+
+  let householdOrdinaryMale = 0
+  let householdOrdinaryFemale = 0
+  let householdSingleMale = 0
+  let householdSingleFemale = 0
+  let householdOrdinary = 0
+  let householdSingle = 0
+
+  data.forEach(e => {
+    householdOrdinaryMale += parseInt(e.household_ordinary_m, 10)
+    householdOrdinaryFemale += parseInt(e.household_ordinary_f, 10)
+    householdSingleMale += parseInt(e.household_single_m, 10)
+    householdSingleFemale += parseInt(e.household_single_f, 10)
+    householdOrdinary += parseInt(e.household_ordinary_total, 10)
+    householdSingle += parseInt(e.household_single_total, 10)
+  })
+
   const total = householdOrdinary + householdSingle
 
   // TODO:solve accessibility warning
   const columnOptions: Highcharts.Options = {
     title: {
       text: '人口數統計',
+      style: {
+        fontSize: '24px',
+        fontWeight: 'bold',
+      },
     },
     xAxis: {
       categories: ['共同生活', '獨立生活'],
@@ -62,8 +66,16 @@ export default function Carts() {
         rotation: 0,
         style: {
           fontWeight: 'bold',
+          fontSize: '18px',
+          color: 'black',
         },
+        x: 12,
+        y: -24,
       },
+      labels: {
+        reserveSpace: true,
+      },
+      tickAmount: 9,
     },
     plotOptions: {
       column: {
@@ -86,10 +98,42 @@ export default function Carts() {
         color: '#bca3f9',
       },
     ],
+    chart: {
+      height: '60%',
+      backgroundColor: 'transparent',
+      marginTop: 100,
+      spacingBottom: 0,
+      marginLeft: 40,
+    },
+    credits: {
+      enabled: false,
+    },
+    responsive: {
+      rules: [
+        {
+          condition: {
+            maxWidth: 500,
+          },
+          chartOptions: {
+            yAxis: {
+              tickAmount: 5,
+            },
+            chart: {
+              marginLeft: 40,
+              height: '110%',
+            },
+          },
+        },
+      ],
+    },
   }
   const pieOptions: Highcharts.Options = {
     title: {
       text: '戶數統計',
+      style: {
+        fontSize: '24px',
+        fontWeight: 'bold',
+      },
     },
     plotOptions: {
       pie: {
@@ -97,12 +141,11 @@ export default function Carts() {
         cursor: 'pointer',
         dataLabels: {
           enabled: true,
-          format: '{point.percentage:.1f}%',
+          format: '{point.percentage:.2f} %',
         },
         showInLegend: true,
       },
     },
-
     series: [
       {
         type: 'pie',
@@ -110,22 +153,56 @@ export default function Carts() {
         data: [
           {
             name: '共同生活',
-            y: householdOrdinary / total,
+            y: Math.round((householdOrdinary / total) * 10000) / 100,
             color: '#636fad',
           },
           {
             name: '獨立生活',
-            y: householdSingle / total,
+            y: Math.round((householdSingle / total) * 10000) / 100,
             color: '#a4b2f9',
           },
         ],
       },
     ],
+    accessibility: {
+      point: {
+        valueSuffix: '%',
+      },
+    },
+    tooltip: {
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>',
+    },
+    chart: {
+      height: '60%',
+      backgroundColor: 'transparent',
+      marginTop: 60,
+    },
+    credits: {
+      enabled: false,
+    },
+    responsive: {
+      rules: [
+        {
+          condition: {
+            maxWidth: 500,
+          },
+          chartOptions: {
+            chart: {
+              height: '100%',
+            },
+          },
+        },
+      ],
+    },
   }
   return (
-    <div>
-      <HighchartsReact highcharts={Highcharts} options={columnOptions} />
-      <HighchartsReact highcharts={Highcharts} options={pieOptions} />
-    </div>
+    <>
+      <div className={classes.Countainer}>
+        <HighchartsReact highcharts={Highcharts} options={columnOptions} />
+      </div>
+      <div className={classes.Countainer}>
+        <HighchartsReact highcharts={Highcharts} options={pieOptions} />
+      </div>
+    </>
   )
 }

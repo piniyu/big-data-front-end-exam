@@ -2,6 +2,14 @@
   display: flex;
   gap: 12px;
 }
+
+@media screen and (max-width: 500px) {
+  .Form {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
 .Button {
   border: none;
   border-radius: 4px;
@@ -9,6 +17,7 @@
   background: var(--primary);
   color: white;
   font-weight: bold;
+  font-family: 'Ubuntu';
 }
 .Button:disabled {
   background: rgba(0, 0, 0, 0.12);

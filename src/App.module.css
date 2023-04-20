@@ -1,6 +1,8 @@
 :root {
   /* color */
-  --primary: rgb(90 53 245);
+  --primary: #651fff;
+  --secondary-light: #c29fff;
+  --secondary-main: #b388ff;
 
   /* font size */
   --base: 1rem;
@@ -11,25 +13,49 @@
 }
 
 h1 {
+  margin: 0;
   font-size: xx-large;
   font-weight: normal;
 }
 
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 25px;
+  }
+}
+
 .Nav {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 48px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
   background: var(--primary);
   color: white;
   font-size: small;
   font-weight: bold;
+  box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
+}
+
+.Settings {
+  display: flex;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 7px;
+  background: none;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .Brand {
   position: absolute;
+  z-index: -1;
   top: 48px;
   left: 0px;
-  /* margin-bottom:calc() ; */
   line-height: 0.75;
   font-size: 200px;
   font-weight: bold;
@@ -41,10 +67,69 @@ h1 {
   -webkit-text-fill-color: transparent;
 }
 
+.Container {
+  margin-left: 149px;
+  padding: 16px;
+  margin-top: 48px !important;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+@media screen and (max-width: 1023px) {
+  .Container {
+    margin-left: 0;
+    padding: 8px;
+  }
+}
+
 .Main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 48px;
+  height: 100%;
+  max-width: 1004px;
+  margin: 0 auto;
+}
+@media screen and (max-width: 1023px) {
+  .Main {
+    gap: 32px;
+  }
+}
 
-  margin-left: 149px;
+.DividerContainer {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.DividerText::before,
+.DividerText::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  width: calc(1004px - 100%);
+  height: 1px;
+  background: var(--secondary-light);
+}
+.DividerText::before {
+  right: 100%;
+  margin-right: 12px;
+}
+.DividerText::after {
+  left: 100%;
+  margin-left: 12px;
+}
+
+.DividerText {
+  position: relative;
+  display: inline-block;
+  border: 1px solid var(--secondary-main);
+  padding: 8px 13px;
+  border-radius: 1000px;
+  background: white;
+  color: var(--secondary-main);
+  font-weight: 500;
+  font-size: small;
 }

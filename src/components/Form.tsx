@@ -1,11 +1,10 @@
 import { useNavigate, useParams, useRouteLoaderData } from 'react-router-dom'
 import { FormProvider, useForm } from 'react-hook-form'
-
 import classes from './form.module.css'
-import CountySelect, { countyLoader } from './CountySelect'
+import CountySelect, { countyLoader } from './selectInputs/CountySelect'
 import { FormProps } from './FormType'
-import YearSelect from './YearSelect'
-import TownSelect from './TownSelect'
+import YearSelect from './selectInputs/YearSelect'
+import TownSelect from './selectInputs/TownSelect'
 
 export default function Form() {
   const param = useParams()

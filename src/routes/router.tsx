@@ -2,7 +2,7 @@ import { RouteObject, createBrowserRouter } from 'react-router-dom'
 import axios from 'axios'
 import App from '../App'
 import ErrorPage from './ErrorPage'
-import { countyLoader } from '../components/CountySelect'
+import { countyLoader } from '../components/selectInputs/CountySelect'
 
 const routerObjectArr: RouteObject[] = [
   {

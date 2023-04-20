@@ -3,15 +3,13 @@ import Select from 'react-select'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { XMLParser } from 'fast-xml-parser'
-import {
-  LoaderFunction,
-  LoaderFunctionArgs,
-  useLoaderData,
-  useLocation,
-  useParams,
-  useRouteLoaderData,
-} from 'react-router-dom'
-import { FormProps } from './FormType'
+import { useLocation } from 'react-router-dom'
+import { FormProps } from '../FormType'
+import classes from './Select.module.css'
+import DropdownIndicator from './DropdownIndicator'
+import ClearIndicator from './ClearIndicator'
+import selectStyles from './selectStyles'
+import selectTheme from './selectTheme'
 
 const xmlParser = new XMLParser()
 
@@ -96,16 +94,26 @@ export default function CountySelect() {
       control={control}
       rules={{ required: true }}
       render={({ field }) => (
-        <Select
-          {...field}
-          options={towns?.map(e => ({
-            label: e.townname,
-            value: e.towncode01.toString(),
-          }))}
-          isDisabled={!getValues('county')}
-          placeholder="請先選擇 縣/市"
-          components={{ IndicatorSeparator: undefined }}
-        />
+        // eslint-disable-next-line jsx-a11y/label-has-associated-control
+        <label className={classes.Label}>
+          <span className={classes.LabelText}>區</span>
+          <Select
+            {...field}
+            options={towns?.map(e => ({
+              label: e.townname,
+              value: e.towncode01.toString(),
+            }))}
+            isDisabled={!getValues('county')}
+            placeholder="請先選擇 縣/市"
+            components={{
+              IndicatorSeparator: undefined,
+              DropdownIndicator,
+              ClearIndicator,
+            }}
+            styles={selectStyles}
+            theme={selectTheme}
+          />
+        </label>
       )}
     />
   )
