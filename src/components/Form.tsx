@@ -1,9 +1,4 @@
-import {
-  useFetcher,
-  useNavigate,
-  useParams,
-  useRouteLoaderData,
-} from 'react-router-dom'
+import { useNavigate, useParams, useRouteLoaderData } from 'react-router-dom'
 import { FormProvider, useForm } from 'react-hook-form'
 
 import classes from './form.module.css'
@@ -45,9 +40,6 @@ export default function Form() {
     const town = v.town?.label ?? ''
     navigate(`/${year}/${county}/${town}`)
   }
-  // useEffect(() => {
-  //   console.log(errors)
-  // }, [errors])
 
   return (
     <FormProvider {...methods}>

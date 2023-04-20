@@ -10,6 +10,11 @@
   --bold: 700;
 }
 
+h1 {
+  font-size: xx-large;
+  font-weight: normal;
+}
+
 .Nav {
   height: 48px;
   display: flex;
@@ -18,10 +23,6 @@
   color: white;
   font-size: small;
   font-weight: bold;
-}
-
-.Header {
-  font-size: xx-large;
 }
 
 .Brand {

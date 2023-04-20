@@ -27,44 +27,6 @@ type TownApiParsedXmlType = {
     townItem: TownItemType
   }
 }
-// type TownApiDataType =
-//   | {
-//       towncode: string
-//       towncode01: string
-//       townname: string
-//     }[]
-//   | string
-
-// export async function townLoader(county: string) {
-//   return axios
-//     .get(`https://api.nlsc.gov.tw/other/ListTown1/${county}`)
-//     .then(res => {
-//       console.log(res.data)
-//       let data
-//       if (typeof res.data === 'string') {
-//         const jObj = xmlParser.parse(res.data) as TownApiParsedXmlType
-//         data = jObj.townItems.townItem
-//       } else {
-//         data = res.data as TownItemType
-//       }
-//       return data
-//     })
-// }
-// export async function townLoader({ params }: LoaderFunctionArgs) {
-//   return axios
-//     .get(`https://api.nlsc.gov.tw/other/ListTown1/${params.county}`)
-//     .then(res => {
-//       console.log(res.data)
-//       let data
-//       if (typeof res.data === 'string') {
-//         const jObj = xmlParser.parse(res.data) as TownApiParsedXmlType
-//         data = jObj.townItems.townItem
-//       } else {
-//         data = res.data as TownItemType
-//       }
-//       return data
-//     })
-// }
 
 const getData = async (
   countyValue: string,
@@ -91,7 +53,7 @@ const getData = async (
 
 export default function CountySelect() {
   const [towns, setTowns] = useState<TownItemType | undefined>(undefined)
-  const { control, watch, getValues, setValue } = useFormContext<FormProps>()
+  const { control, watch, getValues } = useFormContext<FormProps>()
 
   const location = useLocation()
 
