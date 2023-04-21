@@ -15,6 +15,7 @@ const routerObjectArr: RouteObject[] = [
     loader: countyLoader,
     children: [
       {
+        path: '/',
         element: <FormPage />,
         children: [
           {
