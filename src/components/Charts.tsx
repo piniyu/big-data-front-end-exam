@@ -1,9 +1,9 @@
 import * as Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
-import { useRouteLoaderData } from 'react-router-dom'
+import { useAsyncValue } from 'react-router-dom'
 import classes from './Charts.module.css'
 
-type HouseholdDataType = {
+export type HouseholdDataType = {
   district_code: string
   household_business_f: string
   household_business_m: string
@@ -20,7 +20,7 @@ type HouseholdDataType = {
 }
 
 export default function Carts() {
-  const data = useRouteLoaderData('charData') as HouseholdDataType[]
+  const data = useAsyncValue() as HouseholdDataType[]
 
   let householdOrdinaryMale = 0
   let householdOrdinaryFemale = 0
@@ -29,7 +29,7 @@ export default function Carts() {
   let householdOrdinary = 0
   let householdSingle = 0
 
-  data.forEach(e => {
+  data?.forEach(e => {
     householdOrdinaryMale += parseInt(e.household_ordinary_m, 10)
     householdOrdinaryFemale += parseInt(e.household_ordinary_f, 10)
     householdSingleMale += parseInt(e.household_single_m, 10)

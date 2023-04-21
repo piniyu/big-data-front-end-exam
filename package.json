@@ -27,7 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\" --env=jsdom",
     "eject": "react-scripts eject",
     "eslint": "eslint src --ext .ts,.tsx"
   },
@@ -65,6 +65,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "identity-obj-proxy": "^3.0.0",
     "prettier": "^2.8.7",
+    "ts-jest": "^29.1.0",
     "typescript-plugin-css-modules": "^5.0.1"
   }
 }

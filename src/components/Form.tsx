@@ -1,6 +1,6 @@
 import { useNavigate, useParams, useRouteLoaderData } from 'react-router-dom'
 import { FormProvider, useForm } from 'react-hook-form'
-import classes from './form.module.css'
+import classes from './Form.module.css'
 import CountySelect, { countyLoader } from './selectInputs/CountySelect'
 import { FormProps } from './FormType'
 import YearSelect from './selectInputs/YearSelect'
@@ -46,7 +46,7 @@ export default function Form() {
         <YearSelect />
         <CountySelect />
         <TownSelect />
-        <button className={classes.Button} type="submit" disabled={!isValid}>
+        <button className="primaryButton" type="submit" disabled={!isValid}>
           SUBMIT
         </button>
       </form>
