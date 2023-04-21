@@ -45,5 +45,5 @@ const routerObjectArr: RouteObject[] = [
   },
 ]
 
-const router = createBrowserRouter(routerObjectArr)
+const router = createBrowserRouter(routerObjectArr, { basename: '/' })
 export default router
