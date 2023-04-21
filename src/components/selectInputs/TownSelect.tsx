@@ -103,6 +103,8 @@ export default function CountySelect() {
               label: e.townname,
               value: e.towncode01.toString(),
             }))}
+            isClearable
+            isSearchable
             isDisabled={!getValues('county')}
             placeholder="請先選擇 縣/市"
             components={{
@@ -110,7 +112,15 @@ export default function CountySelect() {
               DropdownIndicator,
               ClearIndicator,
             }}
-            styles={selectStyles}
+            styles={{
+              ...selectStyles,
+              control: (style, props) => ({
+                ...(selectStyles.control
+                  ? selectStyles.control(style, props)
+                  : {}),
+                minWidth: '165px',
+              }),
+            }}
             theme={selectTheme}
           />
         </label>
