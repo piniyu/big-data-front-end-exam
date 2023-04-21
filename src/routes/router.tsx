@@ -44,10 +44,5 @@ const routerObjectArr: RouteObject[] = [
   },
 ]
 
-const router = createBrowserRouter(routerObjectArr, {
-  basename:
-    process.env.NODE_ENV === 'production'
-      ? 'big-data-front-end-exam'
-      : undefined,
-})
+const router = createBrowserRouter(routerObjectArr)
 export default router
