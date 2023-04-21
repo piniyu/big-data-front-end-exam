@@ -1,0 +1,83 @@
+h1 {
+  margin: 0;
+  font-size: xx-large;
+  font-weight: normal;
+}
+
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 25px;
+  }
+}
+
+.Nav {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background: var(--primary);
+  color: white;
+  font-size: small;
+  font-weight: bold;
+  box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
+}
+
+.Settings {
+  display: flex;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 7px;
+  background: none;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.Brand {
+  position: absolute;
+  z-index: -1;
+  top: 48px;
+  left: 0px;
+  line-height: 0.75;
+  font-size: 200px;
+  font-weight: bold;
+  writing-mode: vertical-rl;
+  letter-spacing: 36px;
+  background: linear-gradient(red, orange, yellow, green, blue);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.Container {
+  margin-left: 149px;
+  padding: 16px;
+  margin-top: 48px !important;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+@media screen and (max-width: 1023px) {
+  .Container {
+    margin-left: 0;
+    padding: 8px;
+  }
+}
+
+.Main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  height: 100%;
+  max-width: 1004px;
+  margin: 0 auto;
+}
+@media screen and (max-width: 1023px) {
+  .Main {
+    gap: 32px;
+  }
+}

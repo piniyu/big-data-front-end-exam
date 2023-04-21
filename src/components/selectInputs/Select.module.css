@@ -1,0 +1,26 @@
+.Label {
+  position: relative;
+}
+.Label:focus-within .LabelText {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.LabelText {
+  position: absolute;
+  z-index: 1;
+  left: 11px;
+  padding: 0 4px;
+  transform: translateY(-50%);
+  background: white;
+  font-size: x-small;
+  font-weight: 300;
+  white-space: nowrap;
+}
+.CrossIcon,
+.DropdownIcon {
+  fill: #797979;
+}
+.Disable {
+  fill: rgba(121, 121, 121, 0.35);
+}

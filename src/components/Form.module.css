@@ -1,0 +1,15 @@
+.Form {
+  display: flex;
+  gap: 12px;
+}
+
+@media screen and (max-width: 500px) {
+  .Form {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.Error {
+  color: red;
+}
